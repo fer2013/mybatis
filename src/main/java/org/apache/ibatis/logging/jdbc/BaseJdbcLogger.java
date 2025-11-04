@@ -32,7 +32,7 @@ public abstract class BaseJdbcLogger {
     private final List<Object> columnValues = new ArrayList<>();
 
     /** 日志记录器 */
-    protected final Log statemenntLog;
+    protected final Log statementLog;
     /** 查询堆栈深度 */
     protected final int queryStack;
 
@@ -43,7 +43,7 @@ public abstract class BaseJdbcLogger {
      * @param queryStack 查询堆栈深度
      */
     protected BaseJdbcLogger(Log log, int queryStack) {
-        this.statemenntLog = log;
+        this.statementLog = log;
         if (queryStack == 0) {
             this.queryStack = 1;
         } else {
@@ -151,7 +151,7 @@ public abstract class BaseJdbcLogger {
      * @return 如果启用DEBUG级别日志返回true，否则返回false
      */
     protected boolean isDebugEnabled() {
-        return statemenntLog.isDebugEnabled();
+        return statementLog.isDebugEnabled();
     }
 
     /**
@@ -160,7 +160,7 @@ public abstract class BaseJdbcLogger {
      * @return 如果启用TRACE级别日志返回true，否则返回false
      */
     protected boolean isTraceEnabled() {
-        return statemenntLog.isTraceEnabled();
+        return statementLog.isTraceEnabled();
     }
 
     /**
@@ -170,8 +170,8 @@ public abstract class BaseJdbcLogger {
      * @param input 是否为输入操作
      */
     protected void debug(String text, boolean input) {
-        if (statemenntLog.isDebugEnabled()) {
-            statemenntLog.debug(prefix(input) + text);
+        if (statementLog.isDebugEnabled()) {
+            statementLog.debug(prefix(input) + text);
         }
     }
 
@@ -182,8 +182,8 @@ public abstract class BaseJdbcLogger {
      * @param input 是否为输入操作
      */
     protected void trace(String text, boolean input) {
-        if (statemenntLog.isTraceEnabled()) {
-            statemenntLog.trace(prefix(input) + text);
+        if (statementLog.isTraceEnabled()) {
+            statementLog.trace(prefix(input) + text);
         }
     }
 
